@@ -3,12 +3,6 @@ import { StyleSheet, Text, View, Image} from 'react-native';
 import { Card, ListItem, Button, Icon } from 'react-native-elements'
 
 
-const data = {
-    id: '1',
-    title: 'bonjour',
-    image: 'blabla'
-    }
-
 const style = StyleSheet.create({
     card: {
         height: 100,
@@ -26,7 +20,7 @@ const style = StyleSheet.create({
 export default function CardCreator(props) {
 
     // const classes = useStyles()
-    const {title, poster} = props
+    const {data} = props
 
     return (
         <Card >
