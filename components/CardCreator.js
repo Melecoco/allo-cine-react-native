@@ -4,10 +4,9 @@ import {Card} from 'react-native-elements'
 
 const style = StyleSheet.create({
 		card: {
-			height: 100,
+			height: 300,
 			width: 300,
-			margin: 5,
-
+			margin: 5
 		},
 		color: {
 			height: 80,
@@ -23,10 +22,8 @@ export default function CardCreator(props) {
 	return (
 		<Card>
 			<View style={style.card}>
-				<Image style={{width: "100%", height: "100%"}} source={{uri: poster}}/>
-
-				<Text>{title}</Text>
-
+				<Image style={{flex:1}} resizeMode="stretch" source={{uri: poster}}/>
+				<Text style={{fontSize:20, textAlign:"center", marginTop: 9}}> {title}</Text>
 			</View>
 		</Card>
 	);

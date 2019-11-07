@@ -6,6 +6,11 @@ import Searcher from '../components/Searcher'
 
 let isHomeScreenHaventAlreadyLoaded = true;
 const HomePage = (props) => {
+	/* ToDo add Title on page
+	static navigationOptions = {
+		title: 'Home',
+	};
+	*/
 	const {navigation} = props;
 	const [films, setFilms] = useState(0);
 
@@ -19,8 +24,8 @@ const HomePage = (props) => {
 	});
 
 	return (
-		<View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-			<Text h1>Home Screen HELLO</Text>
+		<View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}} >
+			<Text h1 style={{fontSize:30, textAlign:"center", marginBottom: 10, fontWeight: 'bold'}}>Welcome ! </Text>
 			<Searcher onComplete={setFilms}/>
 			<FilmList navigation={navigation} films={films}/>
 		</View>

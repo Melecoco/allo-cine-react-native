@@ -8,34 +8,26 @@ export default function FilmList(props) {
 	const {films, navigation} = props;
 
 	const cardCreation = () => {
-		return (films ? films.map(film => {
-				return (
-
-					<TouchableOpacity
+		return (films
+			? films.map(film => (
+				<TouchableOpacity
+					key={film.id}
+					onPress={() => navigation.navigate('DetailFilm', {film})
+					}
+				>
+					<CardCreator
 						key={film.id}
-						onPress={() => navigation.navigate('DetailFilm', {
-							otherParam: {
-								film: {film}
-							}
-							})
-						}
-					>
-						<CardCreator
-							key={film.id}
-							// id = {film.id}
-							// className = 'card'
-							title={film.title}
-							// releaseYear = {film.releaseYear}
-							// synopsis = {film.synopsis}
-							poster={getPosterFromApi(film.poster)}
+						// id = {film.id}
+						// className = 'card'
+						title={film.title}
+						// releaseYear = {film.releaseYear}
+						// synopsis = {film.synopsis}
+						poster={getPosterFromApi(film.poster)}
 
-						/>
-					</TouchableOpacity>
-
-				)
-			}
-		) : <Text>Chargement..</Text>)
-
+					/>
+				</TouchableOpacity>
+			))
+			: <Text>Chargement..</Text>)
 	};
 
 
