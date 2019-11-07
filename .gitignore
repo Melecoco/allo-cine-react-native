@@ -13,4 +13,10 @@ web-report/
 # macOS
 .DS_Store
 
+<<<<<<< Updated upstream
 .idea/
+=======
+package.json
+
+package-lock.json
+>>>>>>> Stashed changes
