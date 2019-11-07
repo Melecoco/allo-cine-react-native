@@ -17,7 +17,7 @@ export default function FilmList(props) {
 				>
 					<CardCreator
 						key={film.id}
-						// id = {film.id}
+						id = {film.id}
 						// className = 'card'
 						title={film.title}
 						// releaseYear = {film.releaseYear}
