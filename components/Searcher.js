@@ -14,12 +14,6 @@ const style = StyleSheet.create({
 );
 export default class Searcher extends React.Component {
 
-	static defaultProps = {
-		onComplete: () => {
-
-		}
-	};
-
 	constructor(props) {
 		super(props);
 
@@ -31,7 +25,6 @@ export default class Searcher extends React.Component {
 	updateSearch = async (inputValue) => {
 		this.setState({typing: inputValue});
 		this.props.onComplete(await getFilmsFromApiWithSearchedText(inputValue))
-
 	};
 
 	render() {
