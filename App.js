@@ -15,7 +15,8 @@ const AppNavigator = createStackNavigator(
   DetailFilm: DetailFilmPage
   },
   {
-    initialRouteName: 'Home'
+    //nitialRouteName: 'Home'
+    initialRouteName: 'DetailFilm'
   }
 );
 
