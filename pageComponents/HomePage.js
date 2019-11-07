@@ -1,12 +1,18 @@
-import React, {useEffect, useState} from 'react'
+import {getMostPopularFilms} from "../API/TMDB";
+import React, {useState, useEffect} from 'react'
 import {Text, View} from 'react-native';
 import FilmList from './../components/FilmList'
-import {getMostPopularFilms} from "../API/TMDB";
-
+import Searchbar from '../components/Searchbar'
 const HomePage = (props) => {
 	const {navigation} = props;
 
 	const [films, setFilms] = useState(0);
+    return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Searchbar></Searchbar>
+            <Text>HomePage</Text>
+            <FilmList></FilmList>
+        </View>
 
 	useEffect(()  => {
         getMostPopularFilms().then(newFilms =>{ setFilms(newFilms)})
