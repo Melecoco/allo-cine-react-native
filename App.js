@@ -1,10 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import HomePage from './components/HomePage'
-import DetailFilmPage from './components/DetailFilmPage'
-import MyFilmsPage from './components/MyFilmsPage'
-
+import HomePage from './pageComponents/HomePage'
+import MyFilmsPage from './pageComponents/MyFilmsPage'
+import DetailFilmPage from './pageComponents/DetailFilmPage'
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
