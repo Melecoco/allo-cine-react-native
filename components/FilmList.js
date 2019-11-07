@@ -1,72 +1,76 @@
-import React, { Component } from 'react'
+import React from 'react'
 import CardCreator from './CardCreator';
-import { StyleSheet, Text, ScrollView, Image} from 'react-native';
+import {ScrollView, Text} from 'react-native';
+import {getPosterFromApi} from "../API/TMDB";
 
 
 const data = [{
-    id: '1',
-    title: 'bonjour',
-    image: 'blabla'
-    },
-    {
-    id: '2',
-    title: 'au revoir',
-    image: 'blabla'  
-    },
-    {
-    id: '3',
-    title: 'héhéhaha',
-    image: 'blabla'  
-    },
-    {
-    id: '4',
-    title: 'héhé',
-    image: 'blabla'  
-    },
-    {
-        id: '4',
-        title: 'héhé',
-        image: 'blabla'  
-        },
-        {
-            id: '4',
-            title: 'héhé',
-            image: 'blabla'  
-            },
-            {
-                id: '4',
-                title: 'héhé',
-                image: 'blabla'  
-                }
-]
+	id: '1',
+	title: 'bonjour',
+	image: 'blabla'
+},
+	{
+		id: '2',
+		title: 'au revoir',
+		image: 'blabla'
+	},
+	{
+		id: '3',
+		title: 'héhéhaha',
+		image: 'blabla'
+	},
+	{
+		id: '4',
+		title: 'héhé',
+		image: 'blabla'
+	},
+	{
+		id: '4',
+		title: 'héhé',
+		image: 'blabla'
+	},
+	{
+		id: '4',
+		title: 'héhé',
+		image: 'blabla'
+	},
+	{
+		id: '4',
+		title: 'héhé',
+		image: 'blabla'
+	}
+];
 
 //import {Link} from "react-router-dom";
 //import {getPosterFromApi} from './../API/TMDB'
 
-export default function FilmList() {
+export default function FilmList(props) {
 
-    const cardCreation = ()  => {
+	const {films} = props;
 
-        return (data.map( item => (
-            
-                <CardCreator 
-                // key = {item.id}
-                // id = {item.id}
-                // className = 'card'
-                // title = {item.title}
-                // releaseYear = {item.releaseYear}
-                // synopsis = {item.synopsis}
-                // poster = {getPosterFromApi(item.poster)}
-                data={item}
-                ></CardCreator>
+	const cardCreation = () => {
+		return (films ? films.map(film => {
+				return (
+					<CardCreator
+						key={film.id}
+						// id = {film.id}
+						// className = 'card'
+						title={film.title}
+						// releaseYear = {film.releaseYear}
+						// synopsis = {film.synopsis}
+						poster={getPosterFromApi(film.poster)}
 
-        )))
+					/>
 
-    }
+				)
+			}
+		) : <Text>Chargement..</Text>)
+
+	};
 
 
-        return(
-        <ScrollView>
-            {cardCreation()}
-        </ScrollView>)
+	return (
+		<ScrollView>
+			{cardCreation()}
+		</ScrollView>)
 }
