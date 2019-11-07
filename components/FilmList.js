@@ -1,6 +1,6 @@
 import React from 'react'
 import CardCreator from './CardCreator';
-import {ScrollView, Text} from 'react-native';
+import {ScrollView, Text, TouchableOpacity} from 'react-native';
 import {getPosterFromApi} from "../API/TMDB";
 
 
@@ -46,21 +46,32 @@ const data = [{
 
 export default function FilmList(props) {
 
-	const {films} = props;
+	const {films, navigation} = props;
 
 	const cardCreation = () => {
 		return (films ? films.map(film => {
 				return (
-					<CardCreator
-						key={film.id}
-						// id = {film.id}
-						// className = 'card'
-						title={film.title}
-						// releaseYear = {film.releaseYear}
-						// synopsis = {film.synopsis}
-						poster={getPosterFromApi(film.poster)}
 
-					/>
+					<TouchableOpacity
+						key={film.id}
+						onPress={() => navigation.navigate('DetailFilm', {
+							otherParam: {
+								film: {film}
+							}
+							})
+						}
+					>
+						<CardCreator
+							key={film.id}
+							// id = {film.id}
+							// className = 'card'
+							title={film.title}
+							// releaseYear = {film.releaseYear}
+							// synopsis = {film.synopsis}
+							poster={getPosterFromApi(film.poster)}
+
+						/>
+					</TouchableOpacity>
 
 				)
 			}

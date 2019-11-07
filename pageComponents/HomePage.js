@@ -17,9 +17,8 @@ const HomePage = (props) => {
 		<View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
 			<Text h1>Home Screen HELLO</Text>
 			<Searchbar/>
-			<FilmList films={films}/>
+			<FilmList navigation={navigation} films={films}/>
 		</View>
-
 	)
 };
 export default HomePage
