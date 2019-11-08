@@ -18,11 +18,8 @@ export default function FilmList(props) {
 					<CardCreator
 						key={film.id}
 						id = {film.id.toString()}
-						// className = 'card'
 						title={film.title}
-						// releaseYear = {film.releaseYear}
-						// synopsis = {film.synopsis}
-						poster={getPosterFromApi(film.poster)}
+						poster={getPosterFromApi(film.poster ? film.poster : film.poster_path)}
 
 					/>
 				</TouchableOpacity>
