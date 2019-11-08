@@ -1,74 +1,49 @@
-import React, {useState} from 'react'
-import {AsyncStorage, Button, Image, StyleSheet, Text, View} from 'react-native';
+import React from 'react'
+import {Image, StyleSheet, Text, View} from 'react-native';
 import {Card} from 'react-native-elements'
+import LikeButton from "./LikeButton";
 
 
-export default function CardCreator(props) {
+export default class CardCreator extends React.Component {
+
 
 	// const classes = useStyles()
-	const [liked, setLiked] = useState(false);
-	let {title, poster, id} = props;
+	// const [liked, setLiked] = useState(false);
 
-	id = id.toString();
-	let arraysLikes;
+	constructor(props) {
+		super(props);
 
-	AsyncStorage.getItem('likes').then((likes) => {
-		arraysLikes = likes ? likes.split(",") : [];
-		if (arraysLikes.includes(id)) setLiked(true);
-	});
+	}
 
-	return (
-		<Card>
-			<View style={style.card}>
-				<Image style={{flex: 1}} resizeMode="stretch" source={{uri: poster}}/>
-				<View>
-					<Text style={style.text}> {title}</Text>
+	render() {
+		let {poster, title, id} = this.props;
 
-					{/**
-					 *  The second string on this ternaire isn't empty, there is an emoji on it
-					 */
-					}
-					<Button title={liked ? "❤️" : "💙"} onPress={() => {
+		return (
+			<Card>
+				<View style={style.card}>
+					<Image style={{flex: 1}} resizeMode="stretch" source={{uri: poster}}/>
+					<View style={style.view}>
+						<Text style={style.text}> {title}</Text>
 
-						/**
-						 * Role of this  button :
-						 *
-						 * ->  Like / unlike a movie,
-						 * -> Set the hooks
+						{/**
+						 *  The second string on this ternaire isn't empty, there is an emoji on it
 						 */
-						console.log("like", id);
-
-						if (arraysLikes.includes(id)) {
-							if (arraysLikes.includes(id)) {
-								const indexOfId = arraysLikes.findIndex(like => like === id);
-								arraysLikes.splice(indexOfId, 1);
-							}
-							console.log("notLiked", arraysLikes);
-							setLiked(false);
-						} else {
-							arraysLikes.push(id);
-							setLiked(true);
-							console.log("liked", arraysLikes)
 						}
+						<LikeButton id={id}/>
 
-						const stringSent = arraysLikes.length ? arraysLikes.toString() : "";
-						console.log({stringSent});
-						AsyncStorage.setItem('likes', stringSent).catch(error => console.log("settingItem", error))
-
-					}}/>
-
-					{/**
-					 * isOnly To Log
-					 */}
-					<Button title={"log"} onPress={() => {
-						AsyncStorage.getItem('likes').then((likesFromStorage) => {
-							console.log(id, likesFromStorage)
-						}).catch(error => console.log(error))
-					}}/>
+						{/**
+						 * isOnly To Log
+							<Button title={"log"} onPress={() => {
+								AsyncStorage.getItem('likes').then((likesFromStorage) => {
+									console.log(id, likesFromStorage)
+								}).catch(error => console.log(error))
+							}}/>
+						 */}
+					</View>
 				</View>
-			</View>
-		</Card>
-	);
+			</Card>
+		);
+	}
 }
 
 const style = StyleSheet.create({
@@ -81,6 +56,11 @@ const style = StyleSheet.create({
 			height: 80,
 			backgroundColor: 'red'
 		},
-		text: {fontSize: 20, textAlign: "center", marginTop: 9}
+		text: {fontSize: 20, textAlign: "center", marginTop: 9},
+		view: {
+			width: "100%",
+			flexDirection: "row",
+			justifyContent: "space-around"
+		}
 	}
 );
