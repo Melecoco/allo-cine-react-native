@@ -2,24 +2,33 @@ import {getMostPopularFilms} from "../API/TMDB";
 import React, {useEffect, useState} from 'react'
 import {Text, View} from 'react-native';
 import FilmList from './../components/FilmList'
-import Searchbar from '../components/Searchbar'
+import Searcher from '../components/Searcher'
 
+let isHomeScreenHaventAlreadyLoaded = true;
 const HomePage = (props) => {
+	/* ToDo add Title on page
+	static navigationOptions = {
+		title: 'Home',
+	};
+	*/
 	const {navigation} = props;
-
 	const [films, setFilms] = useState(0);
 
-	useEffect(()  => {
-        getMostPopularFilms().then(newFilms =>{ setFilms(newFilms)})
+	useEffect(() => {
+		if (isHomeScreenHaventAlreadyLoaded) {
+			isHomeScreenHaventAlreadyLoaded = false;
+			getMostPopularFilms().then(newFilms => {
+				setFilms(newFilms)
+			});
+		}
 	});
 
 	return (
-		<View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-			<Text h1>Home Screen HELLO</Text>
-			<Searchbar/>
-			<FilmList films={films}/>
+		<View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}} >
+			<Text h1 style={{fontSize:30, textAlign:"center", marginBottom: 10, fontWeight: 'bold'}}>Welcome ! </Text>
+			<Searcher onComplete={setFilms}/>
+			<FilmList navigation={navigation} films={films}/>
 		</View>
-
 	)
 };
 export default HomePage

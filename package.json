@@ -22,7 +22,8 @@
     "react-navigation-stack": "^1.10.3"
   },
   "devDependencies": {
-    "babel-preset-expo": "^7.1.0"
+    "babel-preset-expo": "^7.1.0",
+    "react-navigation-tabs": "^2.5.6"
   },
   "private": true
 }
