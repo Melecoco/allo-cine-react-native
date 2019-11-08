@@ -35,9 +35,9 @@ class HomePage extends React.Component{
 			});
 		}
     }
-    setFilms(e){
-        this.setState({films: e})
-    }
+    // setFilms = (e) => {
+    //     this.setState({films: e})
+    // }
 render(){
     const {navigation} = this.props
     const films = this.state.films
@@ -45,7 +45,7 @@ render(){
     return (
 		<View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}} >
 			<Text h1 style={{fontSize:30, textAlign:"center", marginBottom: 10, fontWeight: 'bold'}}>Welcome ! </Text>
-			<Searcher onComplete={this.setFilms}/>
+			<Searcher onComplete={(e) => this.setState({films: e})}/>
 			<FilmList navigation={navigation} films={films}/>
 		</View>
 	)
