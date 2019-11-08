@@ -36,7 +36,8 @@ class MyFilmsPage extends React.Component {
 		const {navigation} = this.props;
 		return (
 			<View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-				<Text> Your favorite films </Text>
+				<Text style={{fontSize: 30, textAlign: "center", marginBottom: 10, fontWeight: 'bold'}}> Your favorite
+					films </Text>
 				<FilmList navigation={navigation} films={this.state.films}/>
 
 			</View>
