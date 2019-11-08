@@ -5,7 +5,7 @@ import {getPosterFromApi} from "../API/TMDB";
 
 const DetailFilmPage = (props) => {
 	const {navigation} = props;
-	const film = props.navigation.getParam("film");
+	const film = navigation.getParam("film");
 	return (
 
 		<ScrollView>
