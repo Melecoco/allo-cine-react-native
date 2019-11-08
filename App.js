@@ -1,13 +1,11 @@
 import React from 'react';
-import {createBottomTabNavigator} from 'react-navigation-tabs';
+
 import HomePage from './pageComponents/HomePage'
 import MyFilmsPage from './pageComponents/MyFilmsPage'
 import DetailFilmPage from './pageComponents/DetailFilmPage'
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import About from "./pageComponents/About";
-import {Button} from "react-native";
-
 
 const AppNavigator = createStackNavigator(
 	{
@@ -21,17 +19,14 @@ const AppNavigator = createStackNavigator(
 		defaultNavigationOptions: {
 			title: "Awesome Movies",
 
+      //[DONE]
 			/* ToDo: Implement headerRight to active navigation
 			-> Cant use navigate whereas createStackNavigator isn't launch.
 			-> Don't want to implement it manually for each view
 			-> Cant use bottomNav and stackNav
-				headerRight: () => <HeaderRight/>,
-			 */
-			headerRight: () => (
-				<Button
-					onPress={() => alert('This is a button!')}
-					title="About"
-				/>),
+				headerRight: () => <HeaderRight/>,*/
+      //[DONE]
+      
 			headerStyle: {
 				backgroundColor: '#000000',
 			},
@@ -42,12 +37,6 @@ const AppNavigator = createStackNavigator(
 		},
 	}
 );
-
-const TabNavigator = createBottomTabNavigator({
-	Home: HomePage,
-	Settings: MyFilmsPage,
-});
-
 const AppContainer = createAppContainer(AppNavigator);
 
 
