@@ -1,6 +1,6 @@
 import {getMostPopularFilms} from "../API/TMDB";
-import React, {useEffect, useState} from 'react'
-import {Text, View} from 'react-native';
+import React from 'react'
+import {Text, View, Button} from 'react-native';
 import FilmList from './../components/FilmList'
 import Searcher from '../components/Searcher'
 import HeaderRight from '../components/HeaderRight'
@@ -16,6 +16,9 @@ class HomePage extends React.Component{
           navigation={navigation}
         />
       ),
+      headerLeft: () => (
+        <Button title="My films" onPress={() => navigation.navigate("MyFilms")}/>
+      )
     };
   };
 
