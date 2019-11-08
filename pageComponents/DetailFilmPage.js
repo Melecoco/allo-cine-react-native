@@ -10,12 +10,12 @@ const DetailFilmPage = (props) => {
 
 		<ScrollView>
 			<Image style={{width: "100%", height: "100%"}} resizeMode='contain'
-				   source={{uri: getPosterFromApi(film.poster)}}/>
+				   source={{uri: getPosterFromApi(film.poster ? film.poster : film.poster_path)}}/>
 
 			<Text style={{fontSize:30, textAlign:"center", marginBottom: 10, fontWeight: 'bold'}}> {film.title} </Text>
 			<Text style={{marginBottom: 10, fontWeight: 'bold'}}> Synopsis : </Text>
-			<Text style={{marginBottom: 10}}> {film.synopsis} </Text>
-			<Text style={{marginBottom: 10, fontWeight: 'bold'}}> Date de sortie : {film.releaseYear} </Text>
+			<Text style={{marginBottom: 10}}> {film.synopsis ? film.synopsis : film.overview} </Text>
+			<Text style={{marginBottom: 10, fontWeight: 'bold'}}> Date de sortie : {film.releaseYear ? film.releaseYear : film.release_date} </Text>
 
 			<Button
 				icon={<Icon name='code' color='#ffffff'/>}
